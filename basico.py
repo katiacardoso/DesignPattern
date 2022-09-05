@@ -25,13 +25,8 @@ class Carrinho:
 
 carrinho = Carrinho() 
 
+carrinho.adicionar_item(Item('fritas', 5000))
+carrinho.adicionar_item(Item('fritas', 5000))
+carrinho.adicionar_item(Item('fritas', 5000))
+carrinho.adicionar_item(Item('fritas', 5000))
 
-#p = Promocoes()
-carrinho.adicionar_item(Item('fritas', 5000))
-carrinho.adicionar_item(Item('fritas', 5000))
-carrinho.adicionar_item(Item('fritas', 5000))
-carrinho.adicionar_item(Item('fritas', 5000))
-# c.adicionar_item(Item('fritas', 5000))
-
-#print(c.valor)
-#print(p.calcular(c))
