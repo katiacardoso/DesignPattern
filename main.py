@@ -24,11 +24,6 @@ class Carrinho:
         return sum(map(lambda item: item.valor, self.itens))
         #para visualizar a soma no console : carrinho.valor
 
-#aqui pode manipular todas as promoções como um todo        
-class CalculadoraDePromocoes:
-    def calcular(self,valor):
-      return PromocaoMaisDeMil(Promocao5NoCarrinho().calcular(valor))
-
       
 #de fato uma promoção; uma interface
 #classe abstrata: o modo de como a classe será implementada
@@ -40,24 +35,32 @@ class Promocao(ABC):
 class Promocao5NoCarrinho(Promocao):
   def __init__(self, next = None):
     self.next = next
+    
   def calcular(self, carrinho: Carrinho):
-    if len(carrinho) >= 5:
+    if len(carrinho.itens) >= 5:
       return carrinho.valor - (carrinho.valor *0.1)
 # a ideia não é ser cumulativo, mas se ele nao cair na promoção de 5, ele tem que retornar o próximo
     return self.next.calcular(carrinho)
-carrinho = Carrinho() 
+
+
 
 class PromocaoMaisDeMil(Promocao):
   def __init__(self, next = None):
     self.next = next
   def calcular(self, carrinho: Carrinho):
-    if carrinho.valor >= 1.000:
+    if carrinho.valor >= 1_000:
       return carrinho.valor - (carrinho.valor *0.2)
 # a ideia não é ser cumulativo, mas se ele nao cair na promoção de 5, ele tem que retornar o próximo
     return self.next.calcular(carrinho)
+
+
+#aqui pode manipular todas as promoções como um todo        
+class CalculadoraDePromocoes:
+    def calcular(self,valor):
+      return PromocaoMaisDeMil(next=Promocao5NoCarrinho()
+                              ).calcular(valor)
+
 carrinho = Carrinho() 
-
-
 
 carrinho.adicionar_item(Item('fritas', 5000))
 carrinho.adicionar_item(Item('fritas', 5000))
