@@ -1,7 +1,11 @@
+"""
+EXEMPLO DE USO DO DESIGN PATTERN CHAIN OF RESPONSABILITY
+"""
+
 from abc import ABC, abstractstaticmethod
 
 class Item:
-    #método contrutor
+    #método construtor 
     def __init__(self, nome: str, valor: int):
         self.nome = nome
         self.valor = valor
